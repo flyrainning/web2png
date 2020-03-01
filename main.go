@@ -14,7 +14,7 @@ func main() {
 	//监听协议
 	http.HandleFunc("/", screenshotFunc)
 	//监听服务
-	err := http.ListenAndServe("0.0.0.0:8888", nil)
+	err := http.ListenAndServe("0.0.0.0:80", nil)
 
 	if err != nil {
 		fmt.Println("服务器错误")
@@ -35,8 +35,8 @@ func screenshotFunc(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("url:", url)
 
 	// create context
-	// ctx, cancel := chromedp.NewContext(context.Background())
-	ctx, cancel := chromedp.NewRemoteAllocator(context.Background(), "ws://127.0.0.1:9222/devtools/browser/8d198c7b-a374-47c0-80cb-8506718709f3")
+	ctx, cancel := chromedp.NewContext(context.Background())
+	// ctx, cancel := chromedp.NewRemoteAllocator(context.Background(), "ws://127.0.0.1:9222/devtools/browser/8d198c7b-a374-47c0-80cb-8506718709f3")
 	defer cancel()
 	// capture screenshot of an element
 	var buf []byte
