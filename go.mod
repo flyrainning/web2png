@@ -1,4 +1,4 @@
-module gitee.com/flyrainning/web2png
+module github.com/flyrainning/web2png
 
 go 1.13
 
